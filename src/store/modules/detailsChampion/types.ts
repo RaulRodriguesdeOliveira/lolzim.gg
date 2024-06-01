@@ -7,4 +7,5 @@ export enum TYPES {
 
 export interface DETAILS_CHAMPION {
   detailsChampion: InfoChampion
+  teste: number
 }

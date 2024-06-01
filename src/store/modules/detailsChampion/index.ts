@@ -2,6 +2,7 @@ import { Reducer } from 'redux'
 import { DETAILS_CHAMPION, TYPES } from './types'
 
 const INITIAL_STATE: DETAILS_CHAMPION = {
+  teste: 10,
   detailsChampion: {
     id: '',
     key: '',

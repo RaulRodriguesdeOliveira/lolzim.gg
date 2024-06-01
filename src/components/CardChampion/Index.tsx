@@ -10,17 +10,19 @@ interface Props {
 function CardChampion({ props }: Props) {
   return (
     <Card>
-      <Link to={`${props.id}`}>
-        <span className="champ-img">
-          <img
-            alt={props.title}
-            src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${props.id}_0.jpg`}
-          />
-        </span>
-        <span>
-          <div className="champ-name">{props.name}</div>
-        </span>
-      </Link>
+      <div className="body">
+        <Link to={`${props.id}`}>
+          <span className="champ-img">
+            <img
+              alt={props.title}
+              src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${props.id}_0.jpg`}
+            />
+          </span>
+          <span>
+            <div className="champ-name">{props.name}</div>
+          </span>
+        </Link>
+      </div>
     </Card>
   )
 }
