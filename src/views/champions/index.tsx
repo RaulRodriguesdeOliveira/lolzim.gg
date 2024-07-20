@@ -17,20 +17,20 @@ function Champions() {
     CHAMPIONS
   >((state) => state.champions)
 
-  // const { languages, selectLang } = useSelector<ApplicationState, GLOBAL>(
-  //   (state) => state.global
-  // )
+  const { selectLang, selectVersion } = useSelector<ApplicationState, GLOBAL>(
+    (state) => state.global
+  )
 
   useEffect(() => {
     getChampions()
-  }, [])
+  }, [selectLang, selectVersion])
 
   // const [champions, setChampions] = useState<ChampionData[]>([])
 
   async function getChampions() {
     axios
       .get(
-        `http://ddragon.leagueoflegends.com/cdn/14.11.1/data/pt_BR/champion.json`
+        `http://ddragon.leagueoflegends.com/cdn/${selectVersion}/data/${selectLang}/champion.json`
       )
       .then((response) => {
         const championsData = []

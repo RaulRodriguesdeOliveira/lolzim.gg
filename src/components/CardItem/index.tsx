@@ -10,7 +10,7 @@ interface Props {
 }
 
 function CardItem({ props }: Props) {
-  const { version } = useSelector<ApplicationState, GLOBAL>(
+  const { selectVersion } = useSelector<ApplicationState, GLOBAL>(
     (state) => state.global
   )
   return (
@@ -18,7 +18,7 @@ function CardItem({ props }: Props) {
       <div className="items-container">
         <img
           className="item-photo"
-          src={`https://ddragon.leagueoflegends.com/cdn/${version[0]}/img/item/${props.image.full}`}
+          src={`https://ddragon.leagueoflegends.com/cdn/${selectVersion}/img/item/${props.image.full}`}
           alt=""
         />
         <h3 className="item-name">{props.name.toUpperCase()}</h3>

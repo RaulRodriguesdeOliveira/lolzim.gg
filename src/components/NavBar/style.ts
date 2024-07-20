@@ -19,13 +19,37 @@ export const NavigationBar = styled.nav`
     height: 5.5rem;
     top: 0;
     border-bottom: 3px solid black;
+
+    @media (max-width: 576px) {
+      height: 10rem;
+      align-items: center;
+      justify-content: center;
+    }
   }
+
+  & .mobile-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    @media (max-width: 576px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
   & img {
     width: 10rem;
     margin: 0.8rem 0.8rem;
     display: flex;
     align-self: center;
     justify-self: center;
+
+    @media (max-width: 576px) {
+      width: 12rem;
+      /* margin: 1rem 3rem; */
+    }
   }
   & .link-Items {
     margin: auto 8rem;
@@ -41,6 +65,11 @@ export const NavigationBar = styled.nav`
       transition: 0.5s;
       text-decoration: underline;
       color: #f7f5b2;
+    }
+
+    @media (max-width: 576px) {
+      width: 12rem;
+      margin-bottom: 1rem;
     }
   }
   & select {

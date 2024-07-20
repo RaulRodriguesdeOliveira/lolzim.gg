@@ -9,11 +9,12 @@ export const Details = styled.div<DetailsProps>`
     background-image: url(${(props) => props.backgroundImage});
     background-repeat: no-repeat;
     background-size: 100%;
-    height: 100vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     backdrop-filter: blur(8px);
     margin-top: 5.5rem;
+    border-bottom: 0.3rem solid black;
 
     & img {
     }
@@ -60,7 +61,6 @@ export const AbilityContainer = styled.div`
   & .AboutChampion {
     display: flex;
     flex-direction: row;
-    gap: 50px;
   }
 
   & .champion-title {
@@ -91,6 +91,11 @@ export const AbilityContainer = styled.div`
     font-size: 1.2rem;
     color: #fff;
     margin-bottom: 2rem;
+
+    & p:not(:last-child)::after {
+      content: '|';
+      margin-left: 1rem;
+    }
   }
 
   & .function-container {
@@ -121,7 +126,11 @@ export const AbilityContainer = styled.div`
   & .info-container {
     display: flex;
     flex-direction: column;
-    margin-right: 15rem;
+    margin-left: 11rem;
+  }
+
+  & .carouselLayout {
+    margin-right: 1rem;
   }
 
   & .assetsContainer {

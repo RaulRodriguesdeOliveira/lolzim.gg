@@ -11,20 +11,20 @@ import DetailsChampion from 'views/detailsChampion'
 import { BodyItems } from './style'
 
 function ItemsData() {
-  useEffect(() => {
-    getItems()
-  }, [])
   const { itemsData: itemsState } = useSelector<ApplicationState, ITEMS_DATA>(
     (state) => state.itemsData
   )
-  // const { version, selectLang } = useSelector<ApplicationState, GLOBAL>(
-  //   (state) => state.global
-  // )
+  const { selectLang, selectVersion } = useSelector<ApplicationState, GLOBAL>(
+    (state) => state.global
+  )
+  useEffect(() => {
+    getItems()
+  }, [selectLang, selectVersion])
 
   async function getItems() {
     axios
       .get(
-        `https://ddragon.leagueoflegends.com/cdn/14.11.1/data/pt_BR/item.json`
+        `https://ddragon.leagueoflegends.com/cdn/${selectVersion}/data/${selectLang}/item.json`
       )
       .then((response) => {
         const itemsData = []

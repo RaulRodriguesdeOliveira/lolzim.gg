@@ -2,9 +2,10 @@ import { Reducer } from 'redux'
 import { GLOBAL, TYPES } from './types'
 
 const INITIAL_STATE: GLOBAL = {
-  version: [],
+  versions: [],
   languages: [],
-  selectLang: []
+  selectVersion: ['14.11.1'],
+  selectLang: ['en_US']
 }
 
 const reducer: Reducer<GLOBAL> = (state = INITIAL_STATE, action) => {
@@ -12,12 +13,22 @@ const reducer: Reducer<GLOBAL> = (state = INITIAL_STATE, action) => {
     case TYPES.SET_VERSION_DATA:
       return {
         ...state,
-        version: action.value
+        versions: action.value
       }
     case TYPES.CLEAN_VERSION_DATA:
       return {
         ...state,
-        version: INITIAL_STATE.version
+        versions: INITIAL_STATE.versions
+      }
+    case TYPES.SET_SELECTVERSION_DATA:
+      return {
+        ...state,
+        selectVersion: action.value
+      }
+    case TYPES.CLEAN_SELECTVERSION_DATA:
+      return {
+        ...state,
+        selectVersion: INITIAL_STATE.selectVersion
       }
     case TYPES.SET_LANGUAGES_DATA:
       return {

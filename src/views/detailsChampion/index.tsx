@@ -25,23 +25,26 @@ function DetailsChampion() {
     (state) => state.detailsChampion
   )
 
-  // const { selectLang } = useSelector<ApplicationState, GLOBAL>(
-  //   (state) => state.global
-  // )
+  const { selectLang, selectVersion } = useSelector<ApplicationState, GLOBAL>(
+    (state) => state.global
+  )
 
-  const getInfoChampion = useCallback((idChampion: string | undefined) => {
-    axios
-      .get(
-        `http://ddragon.leagueoflegends.com/cdn/14.11.1/data/pt_BR/champion/${capitalize(
-          idChampion
-        )}.json`
-      )
-      .then((response) => {
-        for (const key in response.data.data) {
-          setDetailsChampion(response.data.data[key])
-        }
-      })
-  }, [])
+  const getInfoChampion = useCallback(
+    (idChampion: string | undefined) => {
+      axios
+        .get(
+          `http://ddragon.leagueoflegends.com/cdn/${selectVersion}/data/${selectLang}/champion/${capitalize(
+            idChampion
+          )}.json`
+        )
+        .then((response) => {
+          for (const key in response.data.data) {
+            setDetailsChampion(response.data.data[key])
+          }
+        })
+    },
+    [selectLang, selectVersion]
+  )
 
   useEffect(() => {
     getInfoChampion(idChampion)
@@ -72,66 +75,10 @@ function DetailsChampion() {
         <div className="d-flex flex-wrap">
           <AbilityContainer>
             <div className="AboutChampion">
-              <div
-                style={{ width: '300px' }}
-                id="carouselExampleIndicators"
-                className="carousel slide m-4"
-                data-bs-ride="carousel"
-              >
-                <div className="carousel-inner">
-                  {detailsChampion.skins.map((skin, i) => {
-                    return (
-                      <div
-                        key={i}
-                        className={`carousel-item ${i === 0 ? 'active' : ''}`}
-                      >
-                        <img
-                          src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${capitalize(
-                            idChampion
-                          )}_${skin.num}.jpg`}
-                          className="d-block w-100"
-                          alt={skin.name}
-                        />
-
-                        <div className="Assets">
-                          {/* <img
-                        // src={`https://ddragon.leagueoflegends.com/cdn/14.5.1/img/spell/${detailsChampion.spells[]}`}
-                      /> */}
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-
-                <button
-                  className="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="prev"
-                >
-                  <span
-                    className="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span className="visually-hidden">Previous</span>
-                </button>
-                <button
-                  className="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="next"
-                >
-                  <span
-                    className="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span className="visually-hidden">Next</span>
-                </button>
-              </div>
               <div className="info-container">
                 <ChampImgCard>
                   <img
-                    src={`https://ddragon.leagueoflegends.com/cdn/14.11.1/img/champion/${detailsChampion.image.full}`}
+                    src={`https://ddragon.leagueoflegends.com/cdn/${selectVersion}/img/champion/${detailsChampion.image.full}`}
                   />
                 </ChampImgCard>
                 <h3 className="champion-title">
@@ -144,15 +91,17 @@ function DetailsChampion() {
                   detailsChampion.tags &&
                   detailsChampion.tags.length > 0 && (
                     <div className="champion-function">
-                      <p>{detailsChampion.tags[0].toUpperCase()}</p>
-                      {detailsChampion.tags[1] ? (
+                      {detailsChampion.tags.map((tag) => {
+                        return <p key={tag}>{tag.toUpperCase()}</p>
+                      })}
+                      {/* {detailsChampion.tags[1] ? (
                         <div className="d-flex flex-wrap">
                           <p className="function-separator">|</p>
                           <p>{detailsChampion.tags[1].toUpperCase()}</p>
                         </div>
                       ) : (
                         ''
-                      )}
+                      )} */}
                     </div>
                   )}
                 {/* <div className="champion-function">
@@ -174,6 +123,64 @@ function DetailsChampion() {
                   <div>{detailsChampion.info.magic}</div>
                 </div>
               </div>
+              <div className="carouselLayout">
+                <div
+                  style={{ width: '300px' }}
+                  id="carouselExampleIndicators"
+                  className="carousel slide m-4"
+                  data-bs-ride="carousel"
+                >
+                  <div className="carousel-inner">
+                    {detailsChampion.skins.map((skin, i) => {
+                      return (
+                        <div
+                          key={i}
+                          className={`carousel-item ${i === 0 ? 'active' : ''}`}
+                        >
+                          <img
+                            src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${capitalize(
+                              idChampion
+                            )}_${skin.num}.jpg`}
+                            className="d-block w-100"
+                            alt={skin.name}
+                          />
+
+                          <div className="Assets">
+                            {/* <img
+                        // src={`https://ddragon.leagueoflegends.com/cdn/14.5.1/img/spell/${detailsChampion.spells[]}`}
+                      /> */}
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+
+                  <button
+                    className="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev"
+                  >
+                    <span
+                      className="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span className="visually-hidden">Previous</span>
+                  </button>
+                  <button
+                    className="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next"
+                  >
+                    <span
+                      className="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span className="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div className="d-flex flex-column"></div>
@@ -184,7 +191,7 @@ function DetailsChampion() {
                   {detailsChampion.spells.map((spell, id) => (
                     <div key={id} className="champion-spell">
                       <ImageSkill
-                        src={`https://ddragon.leagueoflegends.com/cdn/14.11.1/img/spell/${spell.image.full}`}
+                        src={`https://ddragon.leagueoflegends.com/cdn/${selectVersion}/img/spell/${spell.image.full}`}
                         alt={spell.name}
                       />
                       <Description>
@@ -200,7 +207,7 @@ function DetailsChampion() {
                       <p className="champion-passive">PASSIVA</p>
                       {detailsChampion.passive && (
                         <ImageSkill
-                          src={`https://ddragon.leagueoflegends.com/cdn/14.11.1/img/passive/${detailsChampion.passive.image.full}`}
+                          src={`https://ddragon.leagueoflegends.com/cdn/${selectVersion}/img/passive/${detailsChampion.passive.image.full}`}
                           alt={detailsChampion.passive.name}
                         />
                       )}

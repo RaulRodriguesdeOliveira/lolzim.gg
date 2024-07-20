@@ -12,6 +12,17 @@ export const cleanVersionData = () =>
     type: TYPES.CLEAN_VERSION_DATA
   })
 
+export const setSelectVersionData = (value: string) =>
+  store.dispatch({
+    type: TYPES.SET_SELECTVERSION_DATA,
+    value
+  })
+
+export const cleanSelectVersionData = () =>
+  store.dispatch({
+    type: TYPES.CLEAN_SELECTVERSION_DATA
+  })
+
 export const setLanguageData = (value: string[]) =>
   store.dispatch({
     type: TYPES.SET_LANGUAGES_DATA,
