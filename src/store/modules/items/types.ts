@@ -1,4 +1,4 @@
-import { Item, Items } from 'models/items'
+import { Item } from 'models/items'
 
 export enum TYPES {
   SET_TYPES_DATA = 'SET_TYPES_DATA',

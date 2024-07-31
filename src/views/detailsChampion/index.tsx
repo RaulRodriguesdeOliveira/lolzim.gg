@@ -10,12 +10,9 @@ import {
   AbilityContainer,
   ChampImgCard,
   ImageSkill,
-  Description,
-  AboutChampion
+  Description
 } from './style'
 import NavBar from 'components/NavBar/NavBar'
-import ItemsData from 'views/items'
-import Champions from 'views/champions'
 import { GLOBAL } from 'store/modules/global/types'
 
 function DetailsChampion() {
@@ -64,13 +61,7 @@ function DetailsChampion() {
     >
       <NavBar />
       <div className="body-container">
-        <div className="champ-img">
-          {/* <img
-          src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${capitalize(
-            idChampion
-          )}_0.jpg`}
-        /> */}
-        </div>
+        <div className="champ-img"></div>
 
         <div className="d-flex flex-wrap">
           <AbilityContainer>
@@ -94,23 +85,8 @@ function DetailsChampion() {
                       {detailsChampion.tags.map((tag) => {
                         return <p key={tag}>{tag.toUpperCase()}</p>
                       })}
-                      {/* {detailsChampion.tags[1] ? (
-                        <div className="d-flex flex-wrap">
-                          <p className="function-separator">|</p>
-                          <p>{detailsChampion.tags[1].toUpperCase()}</p>
-                        </div>
-                      ) : (
-                        ''
-                      )} */}
                     </div>
                   )}
-                {/* <div className="champion-function">
-                  {detailsChampion.tags.map((tag) => (
-                    <div className="function-container" key={tag}>
-                      <p className="function-name">{tag.toUpperCase()}</p>
-                    </div> */}
-                {/* ))} */}
-                {/* </div> */}
                 <p className="champion-blurb">{detailsChampion.blurb}</p>
                 <div className="assets">
                   <label htmlFor="">Ataque</label>
@@ -144,12 +120,6 @@ function DetailsChampion() {
                             className="d-block w-100"
                             alt={skin.name}
                           />
-
-                          <div className="Assets">
-                            {/* <img
-                        // src={`https://ddragon.leagueoflegends.com/cdn/14.5.1/img/spell/${detailsChampion.spells[]}`}
-                      /> */}
-                          </div>
                         </div>
                       )
                     })}

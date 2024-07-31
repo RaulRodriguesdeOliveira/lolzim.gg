@@ -16,7 +16,7 @@ export const NavigationBar = styled.nav`
     width: 100%;
     position: fixed;
     z-index: 1000;
-    height: 5.5rem;
+    height: 7rem;
     top: 0;
     border-bottom: 3px solid black;
 

@@ -1,4 +1,4 @@
-import { Item, Items } from 'models/items'
+import { Item } from 'models/items'
 import { StyledItems } from './style'
 import { useSelector } from 'react-redux'
 import { ApplicationState } from 'store'

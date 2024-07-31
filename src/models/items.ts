@@ -19,15 +19,15 @@ export interface Basic {
   stacks: number
   depth: number
   consumeOnFull: boolean
-  from: any[]
-  into: any[]
+  from: string[]
+  into: string[]
   specialRecipe: number
   inStore: boolean
   hideFromAll: boolean
   requiredChampion: string
   requiredAlly: string
   stats: { [key: string]: number }
-  tags: any[]
+  tags: string[]
   maps: { [key: string]: boolean }
 }
 

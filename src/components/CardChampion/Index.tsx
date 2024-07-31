@@ -1,4 +1,3 @@
-import React from 'react'
 import { ChampionData } from 'models/champion'
 import { Card } from './style'
 import { Link } from 'react-router-dom'

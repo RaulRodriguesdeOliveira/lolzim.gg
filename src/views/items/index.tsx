@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import CardItem from 'components/CardItem'
 import NavBar from 'components/NavBar/NavBar'
@@ -7,7 +8,6 @@ import { ApplicationState } from 'store'
 import { GLOBAL } from 'store/modules/global/types'
 import { setItemsData } from 'store/modules/items/actions'
 import { ITEMS_DATA } from 'store/modules/items/types'
-import DetailsChampion from 'views/detailsChampion'
 import { BodyItems } from './style'
 
 function ItemsData() {

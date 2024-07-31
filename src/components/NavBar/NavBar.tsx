@@ -1,6 +1,5 @@
-import React, { useEffect, version } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import ItemsData from 'views/items'
 import logo from '../../assets/images/League-of-Legends-Logo.png'
 import { NavigationBar } from './style'
 import { useSelector } from 'react-redux'
@@ -8,8 +7,7 @@ import { ApplicationState } from 'store'
 import { GLOBAL } from 'store/modules/global/types'
 import {
   setSelectLangData,
-  setSelectVersionData,
-  setVersionData
+  setSelectVersionData
 } from 'store/modules/global/actions'
 
 const NavBar = () => {
@@ -17,6 +15,7 @@ const NavBar = () => {
     ApplicationState,
     GLOBAL
   >((state) => state.global)
+
   useEffect(() => {
     handleLanguageChange
     handleVersionChange
@@ -46,8 +45,6 @@ const NavBar = () => {
     setSelectLangData(selectedLanguage)
   }
 
-  console.log(selectLang)
-
   return (
     <NavigationBar>
       <nav className="">
@@ -63,23 +60,25 @@ const NavBar = () => {
             </Link>
           </div>
         </div>
-        <select
-          onChange={handleVersionChange}
-          value={selectVersion}
-          name="versions"
-          id="versions"
-        >
-          {versionOptions}
-        </select>
-        <select
-          style={{ cursor: 'pointer' }}
-          onChange={handleLanguageChange}
-          value={selectLang}
-          name="languages"
-          id="languages"
-        >
-          {languageOptions}
-        </select>
+        <div className=" row-xl col-md col-sm">
+          <select
+            onChange={handleVersionChange}
+            value={selectVersion[0]}
+            name="versions"
+            id="versions"
+          >
+            {versionOptions}
+          </select>
+          <select
+            style={{ cursor: 'pointer' }}
+            onChange={handleLanguageChange}
+            value={selectLang[0]}
+            name="languages"
+            id="languages"
+          >
+            {languageOptions}
+          </select>
+        </div>
       </nav>
     </NavigationBar>
   )
