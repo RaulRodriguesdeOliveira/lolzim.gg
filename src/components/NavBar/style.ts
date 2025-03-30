@@ -48,7 +48,6 @@ export const NavigationBar = styled.nav`
 
     @media (max-width: 576px) {
       width: 12rem;
-      /* margin: 1rem 3rem; */
     }
   }
   & .link-Items {

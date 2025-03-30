@@ -192,11 +192,6 @@ export const AbilityContainer = styled.div`
       flex-direction: row;
     }
 
-    & p {
-      /* font-size: 1.4rem; */
-      /* margin-right: 4rem; */
-    }
-
     & img {
       margin: auto 1.5rem;
       border-radius: 5px;
