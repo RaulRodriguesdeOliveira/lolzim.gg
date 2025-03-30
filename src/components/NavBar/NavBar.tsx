@@ -63,7 +63,7 @@ const NavBar = () => {
         <div className=" row-xl col-md col-sm">
           <select
             onChange={handleVersionChange}
-            value={selectVersion[0]}
+            value={selectVersion}
             name="versions"
             id="versions"
           >
@@ -72,7 +72,7 @@ const NavBar = () => {
           <select
             style={{ cursor: 'pointer' }}
             onChange={handleLanguageChange}
-            value={selectLang[0]}
+            value={selectLang}
             name="languages"
             id="languages"
           >

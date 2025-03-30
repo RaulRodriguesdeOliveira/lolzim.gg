@@ -49,10 +49,6 @@ export const Card = styled.div`
       position: absolute;
       display: block;
       padding-top: 10px;
-      /* transform: translate(50%, -50%) rotate(45deg); */
-      /* border-left: 10px solid #fff;
-      border-right: 10px solid #fff;
-      border-bottom: 10px solid #fff; */
       transition: 0.5s;
     }
 

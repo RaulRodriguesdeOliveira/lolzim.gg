@@ -73,7 +73,6 @@ export const AbilityContainer = styled.div`
     font-size: 4rem;
     font-family: 'BeaufortforLOL-Bold', serif;
     font-style: italic;
-    /* margin: 1.2rem auto; */
     color: #f7f5b2;
     text-shadow: 1px 1px 1px black;
   }
